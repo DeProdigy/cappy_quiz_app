@@ -64,14 +64,14 @@ describe 'A page called JavaScript' do
       expect(page).to have_no_content('Java Jive')
     end
 
-  #   it "changes the body's background to pink", :js => true do
-  #     expect(page).to have_css('body.pink')
-  #   end
+    it "changes the body's background to pink", :js => true do
+      expect(page).to have_css('body.pink')
+    end
 
-  #   it "disables the button", :js => true do
-  #     button = page.find('button')
-  #     expect(button.disabled?).to be true
-  #   end
+    it "disables the button", :js => true do
+      button = page.find('button')
+      expect(button.disabled?).to be true
+    end
 
   end
 
