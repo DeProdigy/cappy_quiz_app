@@ -51,13 +51,25 @@ describe 'A page called Quizzes' do
 
   it 'has an input field and a button called calc' do
     has_number_field = page.has_field?('Numbers', :type => 'text')
-    has_button = page.has_button?('Calc')
+    has_button = page.has_button?('calc')
     expect(has_button).to eq true
     expect(has_number_field).to eq true
   end
-  # "/quizzes" should not have a form tag
+
   it 'does not have a form tag' do
     expect(page).to_not have_css('form')
+  end
+
+  it 'should have a green background if the numbers entered are in the ascending order', :js => true do
+    fill_in('Numbers', :with => '33, 44, 55')
+    click_button('calc')
+    expect(page).to have_css('body.green')
+  end
+
+  it 'should have a red background if the numbers entered are not in the ascending order', :js => true do
+    fill_in('Numbers', :with => '44, 05, 11')
+    click_button('calc')
+    expect(page).to have_css('body.red')
   end
 
 end
@@ -107,13 +119,9 @@ end
 # MORE?!
 
 # There should be a link on the home page called "quizzes"
-
 # When a user clicks on "quizzes" they should be re-directed to "/quizzes"
-
 # "/quizzes" should have an input field and a button labeled 'calc'
-
 # "/quizzes" should not have a form tag
-
 # We should be able to fill in a series of numbers separated by commas into the input field and click "calc"
 # The numbers entered should be evaluated by a javascript function called check_increasing
 # If the numbers entered are sorted and ascending the body's background should turn green
