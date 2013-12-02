@@ -34,13 +34,32 @@ describe "The Home Page" do
   end
 
   it "should have a link on the home page called quizzes" do
-    page.has_link? 'quizzes'
+    find_link('Quizzes').click
+    expect(current_path).to eq('/quizzes')
   end
 
   it "should re-directed to /quizzes when clicked on the quizzed link" do
     find_link('Quizzes').click
     expect(current_path).to eq('/quizzes')
   end
+end
+
+describe 'A page called Quizzes' do
+  before(:each) do
+    visit '/quizzes'
+  end
+
+  it 'has an input field and a button called calc' do
+    has_number_field = page.has_field?('Numbers', :type => 'text')
+    has_button = page.has_button?('Calc')
+    expect(has_button).to eq true
+    expect(has_number_field).to eq true
+  end
+  # "/quizzes" should not have a form tag
+  it 'does not have a form tag' do
+
+  end
+
 end
 
 describe 'A page called JavaScript' do
@@ -92,7 +111,9 @@ end
 # When a user clicks on "quizzes" they should be re-directed to "/quizzes"
 
 # "/quizzes" should have an input field and a button labeled 'calc'
+
 # "/quizzes" should not have a form tag
+
 # We should be able to fill in a series of numbers separated by commas into the input field and click "calc"
 # The numbers entered should be evaluated by a javascript function called check_increasing
 # If the numbers entered are sorted and ascending the body's background should turn green
