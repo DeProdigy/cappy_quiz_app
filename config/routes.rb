@@ -3,4 +3,6 @@ CapybaraApp::Application.routes.draw do
 
   get '/javascript' => 'welcome#javascript'
 
+  get '/quizzes' => 'welcome#quizzes'
+
 end

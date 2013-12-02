@@ -33,10 +33,14 @@ describe "The Home Page" do
     expect(current_path).to eq('/javascript')
   end
 
-  it "should be a link on the home page called quizzes" do
+  it "should have a link on the home page called quizzes" do
     page.has_link? 'quizzes'
   end
 
+  it "should re-directed to /quizzes when clicked on the quizzed link" do
+    find_link('Quizzes').click
+    expect(current_path).to eq('/quizzes')
+  end
 end
 
 describe 'A page called JavaScript' do
@@ -84,6 +88,7 @@ end
 # MORE?!
 
 # There should be a link on the home page called "quizzes"
+
 # When a user clicks on "quizzes" they should be re-directed to "/quizzes"
 
 # "/quizzes" should have an input field and a button labeled 'calc'
@@ -92,3 +97,11 @@ end
 # The numbers entered should be evaluated by a javascript function called check_increasing
 # If the numbers entered are sorted and ascending the body's background should turn green
 # else the body's background should turn be red
+
+
+
+
+
+
+
+
