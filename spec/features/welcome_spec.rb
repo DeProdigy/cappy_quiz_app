@@ -57,7 +57,7 @@ describe 'A page called Quizzes' do
   end
   # "/quizzes" should not have a form tag
   it 'does not have a form tag' do
-
+    expect(page).to_not have_css('form')
   end
 
 end
