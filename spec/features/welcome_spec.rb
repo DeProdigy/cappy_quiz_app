@@ -33,6 +33,10 @@ describe "The Home Page" do
     expect(current_path).to eq('/javascript')
   end
 
+  it "should be a link on the home page called quizzes" do
+    page.has_link? 'quizzes'
+  end
+
 end
 
 describe 'A page called JavaScript' do
@@ -81,6 +85,7 @@ end
 
 # There should be a link on the home page called "quizzes"
 # When a user clicks on "quizzes" they should be re-directed to "/quizzes"
+
 # "/quizzes" should have an input field and a button labeled 'calc'
 # "/quizzes" should not have a form tag
 # We should be able to fill in a series of numbers separated by commas into the input field and click "calc"
